@@ -47,7 +47,8 @@ export default function Home() {
   async function buyNFT(nft) {
     const web3Modal = new Web3Modal()
     const connection = await web3Modal.connect()
-    const provider = new ethers.providers.Web3Providers(connection);
+    const provider = new ethers.providers.Web3Provider(connection)
+
 
     const signer = provider.getSigner()
     const contract = new ethers.Contract(nftMarketAddress, Market.abi, signer);
@@ -80,7 +81,7 @@ export default function Home() {
                 </div>
                 <div className="p-4 bg-black">
                   <p className="text-2xl mb-4 font-bold text-white">{nft.price} Matic</p>
-                  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
+                  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNFT(nft)}>Buy</button>
                 </div>
               </div>
             ))
